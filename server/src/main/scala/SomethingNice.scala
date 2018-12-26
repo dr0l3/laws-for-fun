@@ -44,3 +44,25 @@ class SomethingNiceInRealitity(initialElements: List[Something] = Nil) extends S
     }
   }
 }
+
+trait SomethingSimpler {
+  def insert(s: Something): Boolean
+  def findById(id: UUID): Option[Something]
+  def findByName(name: String): List[Something]
+}
+
+class SomethingSimplerNaive extends SomethingSimpler {
+  val list = new ListBuffer[Something]()
+  override def insert(s: Something): Boolean = {
+    list.append(s)
+    true
+  }
+
+  override def findById(id: UUID): Option[Something] = {
+    list.find(_.id == id)
+  }
+
+  override def findByName(name: String): List[Something] = {
+    list.filterNot(_.name == name).toList
+  }
+}

@@ -1,4 +1,4 @@
-import cats.Monad
+import cats.{ Applicative, Eval, Monad, Traverse }
 import cats.kernel.laws._
 import org.scalatest.FunSuite
 import org.typelevel.discipline.scalatest.Discipline
